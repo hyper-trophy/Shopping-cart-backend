@@ -13,9 +13,10 @@ def insert_cart(product_id, quantity, amount):
     finally:
         db_session.close()
 
-def update_cart(item, new_quantity, new_amount):
+def update_cart(product_id, new_quantity, new_amount):
     try:
         db_session = Session()
+        item = db_session.query(Cart).filter(Cart.product_id == product_id).first()
         item.quantity = new_quantity
         item.amount = new_amount
         db_session.commit()
@@ -27,7 +28,7 @@ def update_cart(item, new_quantity, new_amount):
 def get_record_cart(product_id):
     try:
         db_session = Session()
-        item = Cart.query.filter(Cart.product_id == product_id).first()
+        item = db_session.query(Cart).filter(Cart.product_id == product_id).first()
         db_session.close()
         return item
     except:

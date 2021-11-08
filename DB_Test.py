@@ -10,6 +10,10 @@ Session = sessionmaker(bind=engine)
 
 Base = declarative_base()
 
+# 3 - create a new session
+session = Session()
+
+
 
 #creating tables
 
@@ -26,9 +30,10 @@ class Movie(Base):
 
 Base.metadata.create_all(engine)
 
-# 3 - create a new session
-session = Session()
 
+
+#----------------------------------------------------------------------------------
+# Adding(inserting) Data into table
 # 4 - create movies
 # bourne_identity = Movie("The Bourne Identity xyz", date(2022, 10, 11))
 # bourne_identity1 = Movie("The Bourne Identity abc", date(2012, 10, 11))
@@ -38,6 +43,9 @@ session = Session()
 
 # session.commit()
 
+#--------------------------------------------------------------------------------------
+
+#Reading data from the table 
 movies = session.query(Movie).all()
 
 # 4 - print movies' details

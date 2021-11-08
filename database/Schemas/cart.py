@@ -1,6 +1,7 @@
 from sqlalchemy.sql.schema import ForeignKey
 from database.base import Base
 from sqlalchemy import Column, String, Integer, Date
+from database.Schemas.products import *
 
 class Cart(Base):
     __tablename__ = 'cart'
