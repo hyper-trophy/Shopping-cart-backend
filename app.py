@@ -20,8 +20,8 @@ def barcode():
 
 @app.route('/total')
 def total():
-    return get_total();
-    
+    return get_total()
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=3000)
   
