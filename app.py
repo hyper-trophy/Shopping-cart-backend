@@ -4,8 +4,12 @@ from database.services import *
 
 app = Flask(__name__)
 
-@app.route('/ping')
+@app.route('/')
 def main():
+    return 'Server working successfuly!'
+
+@app.route('/ping')
+def ping():
     return 'pong!'
 
 @app.route('/add')
