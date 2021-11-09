@@ -39,5 +39,8 @@ def add_to_cart(product_id):
             new_quantity = item.quantity + 1
             new_amount = product.price*new_quantity
             update_cart(product_id, new_quantity, new_amount)
+        return True
     except:
         print("⛔ error in adding to cart")
+        return False
+        

@@ -4,19 +4,25 @@ from database.services import *
 
 app = Flask(__name__)
 
+@app.route('/ping')
+def main():
+    return 'pong!'
+
+@app.route('/add')
+def barcode():
+    product_id = request.args.get('barcode')
+    if product_id==None:
+        return "please add barcode query parameter"
+    print("id: "+str(product_id))
+    result = add_to_cart(product_id)
+    if result==False:
+        return 'Transaction unsuccessful, check product id'
+    return 'OK'
+
 @app.route('/bill')
 def index():
     return get_bill()
 
-@app.route('/')
-def barcode():
-    try:
-        product_id = request.args.get('barcode')
-        print("id: "+str(product_id))
-        add_to_cart(product_id)
-        return 'OK'
-    except:
-        return 'transaction unsuccessful'
 
 @app.route('/total')
 def total():
