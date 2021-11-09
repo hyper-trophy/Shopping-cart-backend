@@ -43,4 +43,22 @@ def add_to_cart(product_id):
     except:
         print("⛔ error in adding to cart")
         return False
+
+def remove_from_cart(product_id):
+    try:
+        item = get_record_cart(product_id)
+        product = get_record_products(product_id)
+        if item==None:
+            return "nothing to remove"
+        else:
+            new_quantity = item.quantity - 1
+            if new_quantity==0:
+                remove_cart(product_id)
+            else:
+                new_amount = product.price*new_quantity
+                update_cart(product_id, new_quantity, new_amount)
+        return True
+    except:
+        print("⛔ error in adding to cart")
+        return False
         

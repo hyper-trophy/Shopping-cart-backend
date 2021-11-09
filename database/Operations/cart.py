@@ -24,6 +24,17 @@ def update_cart(product_id, new_quantity, new_amount):
         print("⛔ Cannot update Cart")
     finally:
         db_session.close()
+        
+def remove_cart(product_id):
+    try:
+        db_session = Session()
+        item = db_session.query(Cart).filter(Cart.product_id == product_id).first()
+        db_session.delete(item)
+        db_session.commit()
+    except:
+        print("⛔ Cannot remove from Cart")
+    finally:
+        db_session.close()
 
 def get_record_cart(product_id):
     try:

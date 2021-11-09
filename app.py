@@ -19,6 +19,17 @@ def barcode():
         return 'Transaction unsuccessful, check product id'
     return 'OK'
 
+@app.route('/remove')
+def remove():
+    product_id = request.args.get('barcode')
+    if product_id==None:
+        return "please add barcode query parameter"
+    print("id: "+str(product_id))
+    result = remove_from_cart(product_id)
+    if result==False:
+        return 'Transaction unsuccessful, check product id'
+    return 'OK'
+
 @app.route('/bill')
 def index():
     return get_bill()
