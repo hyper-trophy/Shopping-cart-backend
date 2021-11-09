@@ -7,7 +7,9 @@ class Products(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     price = Column(Integer)
+    
 
     def __init__(self, name, price):
         self.name = name
         self.price = price
+        
